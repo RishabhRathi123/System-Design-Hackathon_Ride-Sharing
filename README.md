@@ -114,6 +114,8 @@
 - **Why**: Isolate complex creation logic  
 - **Benefit**: Ensures proper observer attachment  
 
+---
+
 ### Why This Design Works  
 
 1. **Extensible Architecture**  
