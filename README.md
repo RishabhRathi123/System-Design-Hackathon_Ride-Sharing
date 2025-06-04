@@ -136,6 +136,64 @@
 
 5. **Constraint Compliance**  
    - Pure in-memory operation  
-   - Zero external dependencies  
+   - Zero external dependencies
+---
 
-This implementation transforms theoretical principles into practical solutions while maintaining the agility to evolve with business needs. The patterns aren't forced but emerge naturally from problem requirements.
+### Main Function Workflow:
+
+int main() {
+    // Initialize managers
+    auto& riderManager = RiderManager::getInstance();
+    auto& driverManager = DriverManager::getInstance();
+    auto& rideManager = RideManager::getInstance();
+
+    // Create sample data
+    auto rider1 = make_shared<Rider>("R1", "Alice", "111-222", Location(0,0));
+    auto driver1 = make_shared<Driver>("D1", "John", "555-666", 
+        VehicleType::SEDAN, "DL123", Location(1,1), 4.8);
+    
+    // Register users
+    riderManager.addRider(rider1);
+    driverManager.addDriver(driver1);
+
+    // Create ride
+    BookingDetails details{Location(0,0), Location(10,10), VehicleType::SEDAN, RideType::NORMAL};
+    auto ride = rideManager.createRide(rider1, details);
+
+    // Assign driver (60% acceptance chance)
+    if (rideManager.assignDriver(ride)) {
+        rideManager.startRide(ride);
+        
+        // Calculate fare with 20% surge
+        auto fareCalculator = make_unique<SurgePricingDecorator>(
+            make_unique<BaseFareCalculator>(), 1.2);
+        rideManager.completeRide(ride, move(fareCalculator));
+    }
+    return 0;
+}
+
+---
+
+### Output Flow Explanation:
+
+===== Testing Nearest Driver Strategy =====
+[Rider Notification] Ride RIDE_1 Status: CONFIRMED
+Booking Details:
+  Pickup: (0,0)
+  Dropoff: (10,10)
+  Vehicle Type: SEDAN
+  Ride Type: Normal
+Assigned Driver: Driver D1 (John): SEDAN, Rating: 4.8, Location: (1,1)
+
+[Driver Notification] Ride RIDE_1 Status: CONFIRMED
+... (same details as above)
+
+[Rider Notification] Ride RIDE_1 Status: IN_PROGRESS
+... (status updates throughout ride)
+
+[Rider Notification] Ride RIDE_1 Status: COMPLETED
+... (fare calculation details)
+Fare: $260.13
+
+===== Testing Best Rated Driver Strategy =====
+... (similar flow with different strategy)
