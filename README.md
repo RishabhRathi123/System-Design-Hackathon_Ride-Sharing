@@ -180,22 +180,33 @@
 ===== Testing Nearest Driver Strategy =====
 
 [Rider Notification] Ride RIDE_1 Status: CONFIRMED
+
 Booking Details:
+
   Pickup: (0,0)
+  
   Dropoff: (10,10)
+  
   Vehicle Type: SEDAN
+  
   Ride Type: Normal
+
 Assigned Driver: Driver D1 (John): SEDAN, Rating: 4.8, Location: (1,1)
 
 [Driver Notification] Ride RIDE_1 Status: CONFIRMED
+
 ... (same details as above)
 
 [Rider Notification] Ride RIDE_1 Status: IN_PROGRESS
+
 ... (status updates throughout ride)
 
 [Rider Notification] Ride RIDE_1 Status: COMPLETED
+
 ... (fare calculation details)
+
 Fare: $260.13
 
 ===== Testing Best Rated Driver Strategy =====
+
 ... (similar flow with different strategy)
