@@ -183,7 +183,7 @@
 
 Booking Details:
 
-  Pickup: (0,0)
+  /t Pickup: (0,0)
   
   Dropoff: (10,10)
   
