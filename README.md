@@ -141,7 +141,8 @@
 
 ### Main Function Workflow:
 
-int main() {
+    int main() {
+
     // Initialize managers
     auto& riderManager = RiderManager::getInstance();
     auto& driverManager = DriverManager::getInstance();
@@ -170,13 +171,14 @@ int main() {
         rideManager.completeRide(ride, move(fareCalculator));
     }
     return 0;
-}
+    }
 
 ---
 
 ### Output Flow Explanation:
 
 ===== Testing Nearest Driver Strategy =====
+
 [Rider Notification] Ride RIDE_1 Status: CONFIRMED
 Booking Details:
   Pickup: (0,0)
