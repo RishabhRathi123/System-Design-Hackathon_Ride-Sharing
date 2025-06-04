@@ -183,30 +183,30 @@
 
 Booking Details:
 
-  \t Pickup: (0,0)
+    Pickup: (0,0)
   
-  Dropoff: (10,10)
+    Dropoff: (10,10)
   
-  Vehicle Type: SEDAN
+    Vehicle Type: SEDAN
   
-  Ride Type: Normal
+    Ride Type: Normal
 
 Assigned Driver: Driver D1 (John): SEDAN, Rating: 4.8, Location: (1,1)
 
 [Driver Notification] Ride RIDE_1 Status: CONFIRMED
 
-... (same details as above)
+  ... (same details as above)
 
 [Rider Notification] Ride RIDE_1 Status: IN_PROGRESS
 
-... (status updates throughout ride)
+  ... (status updates throughout ride)
 
 [Rider Notification] Ride RIDE_1 Status: COMPLETED
 
-... (fare calculation details)
+  ... (fare calculation details)
 
-Fare: $260.13
+    Fare: $260.13
 
 ===== Testing Best Rated Driver Strategy =====
 
-... (similar flow with different strategy)
+  ... (similar flow with different strategy)
